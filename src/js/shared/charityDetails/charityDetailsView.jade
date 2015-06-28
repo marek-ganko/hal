@@ -1,0 +1,67 @@
+div(style="min-height: calc(100vh - 44px)")
+  .hero.has-mask.chairty-background(
+      ng-style="{'background-image': 'url(data:' + vm.charity.image + ')', 'background-size': 'contains'}"
+    )
+    .content
+      button.button.button-large.button-clear.flat.icon.ion-heart.pull-right.text-white(
+          title="Donate"
+          ui-sref-active="active"
+          ui-sref="tab.charity.donate({id: vm.charity._id})"
+        )
+
+
+      button.button.button-large.button-clear.flat.icon.ion-information-circled.pull-right.text-white(
+          title="Details"
+          ui-sref-active="active"
+          ui-sref="tab.charity.details({id: vm.charity._id})"
+        )
+
+      button.button.button-large.button-clear.flat.icon.ion-network.pull-right.text-white(
+          title="Talents"
+          ui-sref-active="active"
+          ui-sref="tab.charity.talents({id: vm.charity._id})"
+        )
+
+      button.button.button-large.button-clear.flat.icon.ion-android-people.pull-right.text-white(
+        title="Ranking"
+        ui-sref-active="active"
+        ui-sref="tab.charity.ranking({id: vm.charity._id})"
+        )
+
+
+  .mid-bar.dark-bg.z1.padding
+    .pull-right(style="text-align: right")
+      h4
+        i.icon.ion-ios-pulse-strong
+        span &nbsp; {{ vm.charity.points | number }}
+      h5
+        i.icon.ion-arrow-graph-up-right
+        span &nbsp; {{vm.charity.funds | currency }}
+
+    .pull-left
+      h3
+        button.button.button-clear.flat.text-white(
+            ng-show="vm.isDonateState() || vm.isTalentsState()"
+            ui-sref="tab.charity.details({id: vm.charity._id})"
+          )
+          i.icon.ion-chevron-left
+        button.button.button-clear.flat.text-white(
+            ng-show="!vm.isDonateState() && !vm.isTalentsState()"
+            ui-sref="tab.charities()"
+          )
+          i.icon.ion-chevron-left
+    h3 {{ vm.charity.name }}
+
+  .content(style="min-height: 50vh")
+    ion-nav-view(
+      name="sub-content"
+    )
+
+  .bar.bar-footer.bar-stable
+    h3.title Your points {{ vm.charityUser.points | number }} (lvl {{vm.charityUser.lvl }})
+
+  button.button.button-fab.button-fab-bottom-right.button-assertive.icon.ion-card(
+      ng-class="{'hide': vm.isDonateState()}"
+      ui-sref="tab.charity.donate({ id: vm.charity._id })"
+    )
+

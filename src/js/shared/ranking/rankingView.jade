@@ -1,0 +1,18 @@
+.pif-ranking(
+  ng-class="{'is-active': vm.isActive || vm.forceActive}"
+  ng-click="vm.forceActive = !vm.forceActive"
+  )
+  img(
+    ng-src="{{vm.ranking.image}}"
+  )
+  ion-content
+    .row.ranking-header
+      .col #
+      .col User
+      .col Score
+    .row(ng-repeat='user in users | orderBy: "-score"')
+      .col {{ $index + 1 }}
+      .col {{ user.email }}
+      .col {{ user.score }}
+
+

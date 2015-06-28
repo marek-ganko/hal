@@ -1,0 +1,17 @@
+.card.energized-bg.in
+  a.item.clear-bg.item-bg-image.has-mask-reverse.in(
+      ui-sref="tab.charity.details({ id: vm.charity._id })"
+    )
+    h2 &nbsp;
+    .pull-right(style="text-align: right")
+      h2
+        i.icon.ion-ios-pulse-strong
+        span &nbsp; {{ vm.charity.points | number }}
+      h3
+        i.icon.ion-arrow-graph-up-right
+        span &nbsp; {{vm.charity.funds | currency }}
+    h2 {{ vm.charity.name }}
+    p {{ vm.charity.description }}
+    img(
+      ng-src="data:{{vm.charity.image}}"
+      )

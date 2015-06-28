@@ -1,0 +1,35 @@
+.pif-talent {
+  text-align: center;
+  -webkit-filter: saturate(0);
+  filter: saturate(0);
+  cursor: pointer;
+
+  &.is-active {
+    -webkit-filter: none;
+    filter: none;
+
+    img {
+      -webkit-filter: none;
+      filter: none;
+    }
+  }
+
+  img {
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+
+    margin: 20px auto;
+    border-radius: 50%;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to bottom, rgba(76,76,76,1) 0%,rgba(19,19,19,0) 100%);
+    }
+  }
+
+}

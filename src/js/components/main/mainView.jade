@@ -1,0 +1,40 @@
+ion-side-menus
+  ion-side-menu-content
+    ion-header-bar.bar-positive.flat
+      button.button.button-icon.ion-navicon.flat(
+        ng-click="vm.toggleLeft()"
+        ng-hide="$exposeAside.active"
+      )
+      h1.title {{ $root.title }}
+    ion-nav-view(
+      style="top:44px;height:calc(100% - 44px)"
+      name='content'
+    )
+
+  ion-side-menu(
+    expose-aside-when="large"
+    )
+    ion-header-bar.flat
+      h1.title Menu
+    ion-content
+      .list
+        a.item.item-icon-left(
+          ui-sref-active="active"
+          ui-sref="tab.map"
+          )
+          i.icon.ion-map
+          | Map
+
+        a.item.item-icon-left(
+          ui-sref-active="active"
+          ui-sref="tab.charities"
+          )
+          i.icon.ion-ios-location
+          | Projects Nearby
+
+        a.item.item-icon-left(
+          ui-sref-active="active"
+          ui-sref="tab.yours"
+          )
+          i.icon.ion-person
+          | Yours Projects
