@@ -4,7 +4,8 @@ import _ from 'lodash';
 
 class Speak {
 
-  constructor() {
+  constructor($timeout) {
+    this.$timeout = $timeout;
     this.setVoice('Zarvox').then((voice) => {
       console.log(voice);
       this.voice = voice;
@@ -22,7 +23,6 @@ class Speak {
         }
 
         _.each(voices, (voice) => {
-          console.log(voice);
           if (voice.name === name) {
             this.voice = voice;
             return resolve(voice);
@@ -35,11 +35,12 @@ class Speak {
 
   }
 
-  say(text) {
+  say(text, element) {
     return new Promise((resolve, reject) => {
 
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.voice = this.voice;
+      utterance.rate = 0.7;
 
       utterance.addEventListener('end', () => {
         resolve();
@@ -50,6 +51,12 @@ class Speak {
       });
 
       speechSynthesis.speak(utterance);
+
+      element[0].innerHTML = '';
+      text.split('').forEach((elem, index) => {
+        this.$timeout(() => element.append(elem), 100 * index * (1.5 - 0.7));
+      });
+
     });
   }
 
