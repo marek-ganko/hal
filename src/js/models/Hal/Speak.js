@@ -54,6 +54,7 @@ class Speak {
 
       element[0].innerHTML = '';
       text.split('').forEach((elem, index) => {
+        elem = elem == ' ' ? '&nbsp;' : elem;
         this.$timeout(() => element.append(elem), 100 * index * (1.5 - 0.7));
       });
 
