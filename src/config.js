@@ -25,6 +25,7 @@ System.config({
     "lodash": "npm:lodash@3.9.3",
     "ng-cordova": "npm:ng-cordova@0.1.17-alpha",
     "ngmap": "npm:ngmap@1.7.9",
+    "nlp": "github:kroid/angular-nlp-compromise@0.3.7",
     "pusher": "github:pusher/pusher-js@2.2.4",
     "pusher-angular": "github:pusher/pusher-angular@0.1.5",
     "pusher/pusher-angular": "github:pusher/pusher-angular@0.1.5",

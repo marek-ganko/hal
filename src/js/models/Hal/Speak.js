@@ -8,6 +8,8 @@ class Speak {
     this.setVoice('Zarvox').then((voice) => {
       console.log(voice);
       this.voice = voice;
+    }).catch((error) => {
+      console.log(error);
     });
   }
   setVoice(name) {
