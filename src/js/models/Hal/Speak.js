@@ -14,18 +14,23 @@ class Speak {
   }
   setVoice(name) {
     return new Promise((resolve, reject) => {
-      const voices = speechSynthesis.getVoices();
-      if (_.isEmpty(voices)) {
-        reject('No voices available');
-      }
 
-      _.each(voices, (voice) => {
-        console.log(voice);
-        if (voice.name === name) {
-          this.voice = voice;
-          resolve(voice);
+      speechSynthesis.onvoiceschanged = function() {
+        const voices = speechSynthesis.getVoices();
+        if (_.isEmpty(voices)) {
+          return reject('No voices available');
         }
-      });
+
+        _.each(voices, (voice) => {
+          console.log(voice);
+          if (voice.name === name) {
+            this.voice = voice;
+            return resolve(voice);
+          }
+        });
+      };
+
+
     });
 
   }

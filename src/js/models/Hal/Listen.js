@@ -9,6 +9,7 @@ class Listen {
     this.recognition = new SpeechRecognition();
     //this.recognition.continuous = true;
     //this.recognition.interimResults = true;
+    this.recognition.lang = "en-GB";
   }
 
   listen() {
