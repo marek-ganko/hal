@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "app_id": "8727f7df",
+  "name": "hal",
+  "app_id": "159833c1",
   "watchPatterns": [
     "www/*"
   ],
