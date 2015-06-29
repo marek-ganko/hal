@@ -1,6 +1,5 @@
 'use strict';
-import './charitiesService';
-import './pusherService';
-import './usersService';
+import './Hal/Listen';
+import './Hal/Speak';
 
 export * from './models.module';

@@ -7,6 +7,7 @@ var paths = {
   less: ['./src/**/*.less'],
   jade: ['./src/**/*.jade'],
   js: ['./src/**/*.js'],
+  img: ['./src/**/*.png', './src/**/*.jpg', './src/**/*.gif', './src/**/*.jpeg'],
   all: ['./src/**/*.*'],
   dist: 'www/'
 };
@@ -55,7 +56,12 @@ gulp.task('js', function() {
       .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('copy', ['less', 'js', 'jade'], function() {
+gulp.task('img', function() {
+  gulp.src(paths.img)
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('copy', ['less', 'js', 'jade', 'img'], function() {
 });
 
 gulp.task('run', ['copy'], function () {

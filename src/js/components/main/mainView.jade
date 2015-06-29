@@ -1,4 +1,4 @@
-ion-side-menus
+ion-side-menus(side="right")
   ion-side-menu-content
     ion-header-bar.bar-positive.flat
       button.button.button-icon.ion-navicon.flat(
@@ -20,21 +20,8 @@ ion-side-menus
       .list
         a.item.item-icon-left(
           ui-sref-active="active"
-          ui-sref="tab.map"
+          ui-sref="tab.hal"
           )
           i.icon.ion-map
-          | Map
+          | HAL
 
-        a.item.item-icon-left(
-          ui-sref-active="active"
-          ui-sref="tab.charities"
-          )
-          i.icon.ion-ios-location
-          | Projects Nearby
-
-        a.item.item-icon-left(
-          ui-sref-active="active"
-          ui-sref="tab.yours"
-          )
-          i.icon.ion-person
-          | Yours Projects

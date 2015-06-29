@@ -1,0 +1,40 @@
+pif-hal-component {
+  height: 100%;
+  width: 100%;
+  display: block;
+  background: #000 !important;
+  color: #fff;
+  .hal-body {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    .hal-eye {
+      height: 100%;
+      width: 100%;
+      background-image: url(hal9000.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      opacity: 0.9;
+      .hal-light {
+        height: 100%;
+        width: 100%;
+        background-image: url(hal-light.png);
+        background-size: 70% 70%;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: pulsate 1.5s ease-out;
+        animation-iteration-count: infinite;
+        opacity: 0.0;
+      }
+    }
+
+  }
+
+  @-webkit-keyframes pulsate {
+    0% {-webkit-transform: scale(1, 1); opacity: 0.5;}
+    50% {-webkit-transform: scale(1, 1); opacity: 1.0;}
+    100% {-webkit-transform: scale(1, 1); opacity: 0.5;}
+  }
+
+}
