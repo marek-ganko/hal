@@ -1,4 +1,4 @@
 'use strict';
 import angular from 'angular';
 
-export default angular.module('pif-components', []);
+export default angular.module('pif-components', ['nlpCompromise']);

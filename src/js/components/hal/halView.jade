@@ -1,4 +1,4 @@
-button.button.button-calm(ng-click='startConversation()') Start Conversation
+button.button.button-calm(ng-if='!isActive' ng-click='startConversation()') Start Conversation
 
 .hal-body(ng-if='isActive')
     .hal-eye

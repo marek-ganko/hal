@@ -14,10 +14,6 @@ var paths = {
 
 gulp.task('default', ['copy']);
 
-gulp.task('watch', function() {
-  gulp.watch(paths.all, ['copy']);
-});
-
 gulp.task('install', ['git-check'], function() {
   return gulpPlugins.bower.commands.install()
     .on('log', function(data) {
@@ -64,7 +60,7 @@ gulp.task('img', function() {
 gulp.task('copy', ['less', 'js', 'jade', 'img'], function() {
 });
 
-gulp.task('run', ['copy'], function () {
+gulp.task('watch', ['copy'], function () {
   gulp.watch(paths.less, ['less']);
   gulp.watch(paths.js, ['js']);
   gulp.watch(paths.jade, ['jade']);

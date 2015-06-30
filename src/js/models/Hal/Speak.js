@@ -2,11 +2,14 @@
 import modelsModule from '../models.module';
 import _ from 'lodash';
 
+const VOICE_NAME = 'Zarvox'; //Zarvox, Samantha, Daniel, Fiona, Karen
+const VOICE_RATE = 0.7;
+
 class Speak {
 
   constructor($timeout) {
     this.$timeout = $timeout;
-    this.setVoice('Zarvox').then((voice) => {
+    this.setVoice(VOICE_NAME).then((voice) => {
       console.log(voice);
       this.voice = voice;
     }).catch((error) => {
@@ -40,7 +43,7 @@ class Speak {
 
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.voice = this.voice;
-      utterance.rate = 0.7;
+      utterance.rate = VOICE_RATE;
 
       utterance.addEventListener('end', () => {
         resolve();

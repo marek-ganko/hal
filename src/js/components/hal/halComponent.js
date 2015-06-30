@@ -4,12 +4,12 @@ import template from './halView.html!text';
 import './halStyles.css!';
 import _ from 'lodash';
 
-componentsModule.directive('pifHalComponent', (HalSpeak, HalListen, $timeout) => {
+componentsModule.directive('pifHalComponent', (HalSpeak, HalListen, nlp, $http) => {
   return {
     template,
     link: (scope, element) => {
       scope.isActive = false;
-      let el;
+      let halTextElement;
 
       scope.startConversation = () => {
         scope.isActive = true;
@@ -19,8 +19,8 @@ componentsModule.directive('pifHalComponent', (HalSpeak, HalListen, $timeout) =>
         if (!isActive) {
           return;
         }
-        el = angular.element(element[0].querySelector('.hal-text'));
-        HalSpeak.say('This is Hal, what can I do for you?', el).then(() => {
+        halTextElement = angular.element(element[0].querySelector('.hal-text'));
+        HalSpeak.say('This is Hal, what can I do for you?', halTextElement).then(() => {
           console.log('finished');
           talkWithHal();
         });
@@ -29,13 +29,20 @@ componentsModule.directive('pifHalComponent', (HalSpeak, HalListen, $timeout) =>
       function talkWithHal() {
         return HalListen.listen()
           .then((result) => {
-            console.log(result);
-            HalSpeak.say('You said: ' + result, el);
-            talkWithHal('Please tell me something else');
+
+            $http.get(`https://yoda.p.mashape.com/yoda?sentence=${encodeURI(result)}`, {
+              headers: {'X-Mashape-Key': 'YuX5mt727rmsh2PDPTHIySgjnyJvp1hp1BQjsnFkRVicjDsYoB', 'Accept': 'text/plain'}
+            }).then((result) => {
+              console.log(result.data);
+
+              HalSpeak.say('You said: ' + result.data, halTextElement);
+              talkWithHal('Please tell me something else');
+            });
+
           })
           .catch((error) => {
             console.log(error);
-            HalSpeak.say(error, el);
+            HalSpeak.say(error, halTextElement);
             talkWithHal('Please tell me something else');
           });
       }
